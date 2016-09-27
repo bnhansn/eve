@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+build
+*.log
+npm-debug.log
+.env
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
