@@ -1,7 +1,10 @@
 {
   "name": "eve",
   "version": "0.0.1",
-  "description": "",
+  "description": "An Ekto blog template with server rendering",
+  "author": "Ben Hansen <bnhansn@gmail.com>",
+  "license": "MIT",
+  "private": true,
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -12,9 +15,14 @@
     "aphrodite": "^0.5.0",
     "autoprefixer": "^6.4.1",
     "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-class-properties": "^6.11.5",
+    "babel-plugin-transform-object-assign": "^6.8.0",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.25.0",
     "del": "^2.2.1",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
@@ -25,6 +33,7 @@
     "md5": "^2.2.1",
     "moment": "^2.15.1",
     "normalize.css": "^4.2.0",
+    "postcss-loader": "^0.13.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-helmet": "^3.1.0",
@@ -40,17 +49,11 @@
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-react-transform": "^2.0.2",
-    "babel-plugin-transform-class-properties": "^6.11.5",
-    "babel-plugin-transform-object-assign": "^6.8.0",
-    "css-loader": "^0.25.0",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.2.2",
-    "postcss-loader": "^0.13.0",
     "react-transform-hmr": "^1.0.4"
   }
 }
