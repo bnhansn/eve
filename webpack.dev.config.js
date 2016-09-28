@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-require('dotenv').config();
+require('dotenv').config(); // eslint-disable-line
 
 module.exports = {
   devtool: '#source-map',
