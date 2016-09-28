@@ -1,3 +1,4 @@
+// strict mode required for heroku deploy
 'use strict'; // eslint-disable-line
 
 const path = require('path');
