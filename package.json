@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
-    "prestart": "NODE_ENV=production webpack --config ./webpack.prod.config.js --progress"
+    "postinstall": "webpack --config ./webpack.prod.config.js --progress"
   },
   "dependencies": {
     "aphrodite": "^0.5.0",
@@ -42,9 +42,7 @@
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
     "striptags": "^2.1.1",
-    "webpack": "^1.13.1",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.12.2"
+    "webpack": "^1.13.1"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
@@ -53,6 +51,8 @@
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.2.2",
-    "react-transform-hmr": "^1.0.4"
+    "react-transform-hmr": "^1.0.4",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.2"
   }
 }

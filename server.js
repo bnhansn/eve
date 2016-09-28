@@ -1,4 +1,4 @@
-/* eslint-disable no-console, global-require */
+/* eslint-disable no-console, global-require, import/no-extraneous-dependencies */
 require('babel-core/register');
 
 const path = require('path');
