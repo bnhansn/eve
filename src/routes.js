@@ -3,7 +3,7 @@ import { Route } from 'react-router';
 import App from './containers/App';
 import Home from './containers/Home';
 import Post from './containers/Post';
-import NotFound from './containers/NotFound';
+import NotFound from './components/NotFound';
 
 export default (
   <Route component={App}>
