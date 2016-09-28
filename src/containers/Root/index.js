@@ -18,14 +18,14 @@ class Root extends Component {
           {head.title.toComponent()}
           {head.meta.toComponent()}
           {head.link.toComponent()}
-          <link rel="stylesheet" href="/styles.css" />
+          <link rel="stylesheet" href="/static/styles.css" />
           <style data-aphrodite>${css.content}</style>
         </head>
         <body>
           <div id="root" dangerouslySetInnerHTML={{ __html: html }} />
           {this.renderInitialState()}
           {head.script.toComponent()}
-          <script src="/bundle.js" />
+          <script src="/static/bundle.js" />
         </body>
       </html>
     );
