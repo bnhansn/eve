@@ -17,7 +17,7 @@ class CleanPlugin {
 module.exports = {
   entry: './src/index',
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, 'build/static'),
     filename: 'bundle.js',
     publicPath: '/static',
   },

@@ -1,12 +1,9 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console, global-require */
 require('babel-core/register');
 
 const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
-const dev = require('webpack-dev-middleware');
-const hot = require('webpack-hot-middleware');
-const config = require('./webpack.dev.config');
 
 const port = process.env.PORT || 3000;
 const server = express();
@@ -27,6 +24,10 @@ server.get('/favicon.ico', (req, res) => {
 server.use(express.static(path.resolve(__dirname, 'build')));
 
 if (process.env.NODE_ENV !== 'production') {
+  const dev = require('webpack-dev-middleware');
+  const hot = require('webpack-hot-middleware');
+  const config = require('./webpack.dev.config');
+
   const compiler = webpack(config);
 
   server.use(dev(compiler, {
