@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { css, StyleSheet } from 'aphrodite';
 import striptags from 'striptags';
 import Gravatar from '../Gravatar';
+import { media } from '../../styles/settings';
 
 const styles = StyleSheet.create({
   title: {
@@ -30,6 +31,13 @@ const styles = StyleSheet.create({
     marginRight: '.75rem',
     borderRight: '1px solid rgba(160,165,170,.5)',
   },
+
+  postDivider: {
+    margin: '2rem 0',
+    [media.smUp]: {
+      margin: '4rem 0',
+    },
+  },
 });
 
 const excerpt = (html) => {
@@ -50,7 +58,7 @@ const PostPreview = ({ post }) =>
       <span className={css(styles.author)}>{post.author.name}</span>
       <time>{moment(post.publishedAt).format('D MMMM YYYY')}</time>
     </div>
-    <hr style={{ margin: '4rem 0' }} />
+    <hr className={css(styles.postDivider)} />
   </div>;
 
 PostPreview.propTypes = {

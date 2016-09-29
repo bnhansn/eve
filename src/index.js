@@ -22,7 +22,7 @@ const isClient = typeof document !== 'undefined';
 
 if (isClient) {
   require('normalize.css');
-  require('./index.css');
+  require('./styles/index.css');
 
   const store = configureStore(window.__INITIAL_STATE__);
 
