@@ -1,6 +1,21 @@
-import React, { Component, PropTypes } from 'react';
+// @flow
+import React, { Component } from 'react';
+
+type Props = {
+  initialState: Object,
+  html: string,
+  css: Object,
+  head: {
+    title: Object,
+    meta: Object,
+    link: Object,
+    script: Object,
+  },
+};
 
 class Root extends Component {
+  props: Props;
+
   renderInitialState() {
     if (this.props.initialState) {
       const innerHtml = `window.__INITIAL_STATE__ = ${JSON.stringify(this.props.initialState)}`;
@@ -19,7 +34,7 @@ class Root extends Component {
           {head.meta.toComponent()}
           {head.link.toComponent()}
           <link rel="stylesheet" href="/static/styles.css" />
-          <style data-aphrodite>${css.content}</style>
+          <style data-aphrodite>{css.content}</style>
         </head>
         <body>
           <div id="root" dangerouslySetInnerHTML={{ __html: html }} />
@@ -31,17 +46,5 @@ class Root extends Component {
     );
   }
 }
-
-Root.propTypes = {
-  css: PropTypes.object,
-  html: PropTypes.string,
-  initialState: PropTypes.object,
-  head: PropTypes.shape({
-    title: PropTypes.object,
-    meta: PropTypes.object,
-    link: PropTypes.object,
-    script: PropTypes.object,
-  }),
-};
 
 export default Root;

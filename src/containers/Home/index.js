@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+// @flow
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { css, StyleSheet } from 'aphrodite';
@@ -37,13 +38,30 @@ const initialState = {
   limit: 5,
 };
 
-class Home extends Component {
-  static propTypes = {
-    app: PropTypes.object.isRequired,
-    posts: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
-  };
+type Post = {
+  id: number,
+};
 
+type Props = {
+  dispatch: () => void,
+  app: {
+    readyState: string,
+    account: {
+      description?: string,
+      metaTitle?: string,
+    },
+  },
+  posts: {
+    readyState: string,
+    list: Array<Post>,
+    meta: {
+      nextPage?: bool,
+    },
+    isLoadingMorePosts: bool,
+  },
+};
+
+class Home extends Component {
   static readyOnActions(dispatch) {
     const { page, limit } = initialState;
     return Promise.all([
@@ -51,10 +69,15 @@ class Home extends Component {
     ]);
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = initialState;
   }
+
+  state: {
+    page: number,
+    limit: number,
+  };
 
   componentDidMount() {
     Home.readyOnActions(this.props.dispatch);
@@ -88,7 +111,7 @@ class Home extends Component {
 
     if (posts.readyState === FETCH_POSTS_PENDING ||
         posts.readyState === FETCH_POSTS_REQUEST) {
-      return [...Array(5).keys()].map(i => <PostPreviewTemplate key={i} />);
+      return [1, 2, 3, 4, 5].map(i => <PostPreviewTemplate key={i} />);
     }
 
     if (posts.readyState === FETCH_POSTS_FAILURE) {
@@ -103,7 +126,7 @@ class Home extends Component {
 
     return (
       <div>
-        <Helmet title={account.description} titleTemplate={`${account.metaTitle}`} />
+        <Helmet title={account.metaTitle} titleTemplate={`${account.metaTitle}`} />
         {this.renderHeader()}
         <section className="container">
           {this.renderPosts()}
@@ -117,7 +140,7 @@ class Home extends Component {
               </button>
             </div>
           }
-          {isLoadingMorePosts && [...Array(5).keys()].map(i => <PostPreviewTemplate key={i} />)}
+          {isLoadingMorePosts && [1, 2, 3, 4, 5].map(i => <PostPreviewTemplate key={i} />)}
         </section>
       </div>
     );

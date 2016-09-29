@@ -7,7 +7,10 @@
       "jsx": true,
     }
   },
-  "plugins": ["react"],
+  "plugins": [
+    "react",
+    "flowtype"
+  ],
   "extends": ["airbnb"],
   "settings": {
     "react": {
@@ -27,9 +30,8 @@
     "import/prefer-default-export": 0,
     "react/jsx-filename-extension": 0,
     "react/no-danger": 0,
-    "react/no-unused-prop-types": [2, { skipShapeProps: true }],
-    "react/forbid-prop-types": 0,
     "no-underscore-dangle": 0,
-    "new-cap": 0
+    "new-cap": 0,
+    "react/no-unused-prop-types": 0
   }
 }

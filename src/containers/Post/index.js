@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+// @flow
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import moment from 'moment';
@@ -43,22 +44,35 @@ const styles = StyleSheet.create({
   },
 });
 
-class Post extends Component {
-  static propTypes = {
-    app: PropTypes.object.isRequired,
-    post: PropTypes.object.isRequired,
-    params: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
-  };
+type Props = {
+  dispatch: () => void,
+  params: {
+    slug: string,
+  },
+  app: {
+    readyState: string,
+    account: Object,
+  },
+  post: {
+    readyState: string,
+    data: {
+      title: string,
+      html: string,
+      publishedAt: string,
+      image?: string,
+      author: {
+        name: string,
+        email: string,
+      },
+    },
+  },
+};
 
+class Post extends Component {
   static readyOnActions(dispatch, params) {
-    // is react-router sending string 'null'? Try to fix in v4 upgrade
-    if (params.slug !== 'null') {
-      return Promise.all([
-        dispatch(fetchPostIfNeeded(params.slug)),
-      ]);
-    }
-    return true;
+    return Promise.all([
+      dispatch(fetchPostIfNeeded(params.slug)),
+    ]);
   }
 
   componentDidMount() {
@@ -76,6 +90,8 @@ class Post extends Component {
   componentWillUnmount() {
     this.props.dispatch(resetState());
   }
+
+  props: Props;
 
   renderHeader() {
     const { post, app, app: { account } } = this.props;

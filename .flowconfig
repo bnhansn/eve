@@ -1,0 +1,11 @@
+[ignore]
+./build
+.*/node_modules/react-side-effect/node_modules/fbjs/flow/include/PromiseMap.js
+.*/node_modules/react-side-effect/node_modules/fbjs/flow/include/fetchWithRetries.js
+
+[include]
+./src
+
+[libs]
+
+[options]
